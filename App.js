@@ -8,107 +8,87 @@
 
 import React from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
+    SafeAreaView,
+    StatusBar,
 } from 'react-native';
-
 import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+    Container,
+    Header,
+    Title,
+    Content,
+    Footer,
+    FooterTab,
+    Button,
+    Left,
+    Right,
+    Body,
+    Icon,
+    Text,
+    Form,
+    Item,
+    Input,
+    Label,
+    StyleProvider
+} from 'native-base';
+import getTheme from './native-base-theme/components';
+import commonColor from './native-base-theme/variables/commonColor';
 
 const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
+    return (
+        <StyleProvider style={getTheme(commonColor)}>
+            <Container style={{
+                backgroundColor: '#c2fff1'
+            }}>
+                <StatusBar/>
+                {/*<Header>*/}
+                {/*<Left>*/}
+                {/*<Button transparent>*/}
+                {/*<Icon name='menu'/>*/}
+                {/*</Button>*/}
+                {/*</Left>*/}
+                {/*<Body>*/}
+                {/*<Title>Header</Title>*/}
+                {/*</Body>*/}
+                {/*<Right/>*/}
+                {/*</Header>*/}
+                <Header transparent />
+                <Content contentContainerStyle={{
+                    height:'100%',
+                    display:'flex',
+                    justifyContent:'flex-end'
+                }} padder>
+                    <Form>
+                        <Item inlineLabel>
+                            <Label>Username</Label>
+                            <Input/>
+                        </Item>
+                        <Item inlineLabel last>
+                            <Label>Password</Label>
+                            <Input/>
+                        </Item>
+                        <Button rounded primary>
+                            <Text>Get Started</Text>
+                        </Button>
+                    </Form>
+                </Content>
+                <Footer style={{
+                    backgroundColor: 'transparent',
+                    borderTopWidth:0
+                }} >
+                    <FooterTab>
+                        <Button>
+                            <Text>Create Account</Text>
+                        </Button>
+                        <Button>
+                            <Text>Need Help?</Text>
+                        </Button>
+                    </FooterTab>
+                </Footer>
+            </Container>
+        </StyleProvider>
+
+    );
 };
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
 
 export default App;
